@@ -16,19 +16,17 @@
 <body>
     <h1>Калькулятор</h1>
 
-    <form method="post" action="/Calculator/Index">
-        <input type="number" name="num1" value="@ViewBag.Num1" step="any" required />
-        
+    <form method="post" asp-controller="Calculator" asp-action="Index">
+        @Html.AntiForgeryToken()
+        <input type="text" name="number1" value="@ViewBag.number1" required />
         <select name="operation" required>
-            <option value="add">+</option>
-            <option value="subtract">-</option>
-            <option value="multiply">×</option>
-            <option value="divide">÷</option>
+            <option value="Add">+</option>
+            <option value="Subtract">-</option>
+            <option value="Multiply">*</option>
+            <option value="Divide">/</option>
         </select>
-        
-        <input type="number" name="num2" value="@ViewBag.Num2" step="any" required />
-        
-        <button type="submit">=</button>
+        <input type="text" name="number2" value="@ViewBag.number2" required />
+        <input type="submit" value="Рассчитать" />
     </form>
 
     @if (ViewBag.Result != null)
